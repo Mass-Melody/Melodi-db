@@ -16,7 +16,11 @@ const v2Routes = require('./routes/v2.js')
 const app = express();
 
 // App Level MW
-app.use(cors());
+app.use(
+  cors({
+    origin: '*'
+  })
+);
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,7 +43,7 @@ app.use(errorHandler)
 module.exports = {
   app: app,
   start: (port) => {
-    if(!port) {throw new Error("Missing Port");}
+    if (!port) { throw new Error("Missing Port"); }
     app.listen(port, () => console.log(`Listening on PORT: ${port}`))
   }
 }

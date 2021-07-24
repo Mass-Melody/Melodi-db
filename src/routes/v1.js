@@ -27,10 +27,10 @@ v1.param('model', (req, res, next) => {
 });
 
 v1.get('/api/v1/:model', handleGetAll);
-v1.get('/api/v1/:model/:id', handleGetOne);
+v1.get('/api/v1/:model/:username', handleGetOne);
 v1.post('/api/v1/:model', handleCreate);
-v1.put('/api/v1/:model/:id', handleUpdate);
-v1.delete('/api/v1/:model/:id', handleDelete);
+v1.put('/api/v1/:model/:username', handleUpdate);
+v1.delete('/api/v1/:model/:username', handleDelete);
 
 async function handleGetAll(req, res) {
   let allRecords = await req.model.get();
@@ -38,8 +38,8 @@ async function handleGetAll(req, res) {
 }
 
 async function handleGetOne(req, res) {
-  const id = req.params.id;
-  let theRecord = await req.model.get(id)
+  const username = req.params.username;
+  let theRecord = await req.model.get(username)
   res.status(200).json(theRecord);
 }
 
@@ -50,15 +50,15 @@ async function handleCreate(req, res) {
 }
 
 async function handleUpdate(req, res) {
-  const id = req.params.id;
+  const username = req.params.username;
   const obj = req.body;
-  let updatedRecord = await req.model.update(id, obj)
+  let updatedRecord = await req.model.update(username, obj)
   res.status(200).json(updatedRecord);
 }
 
 async function handleDelete(req, res) {
-  let id = req.params.id;
-  let deletedRecord = await req.model.delete(id);
+  let username = req.params.username;
+  let deletedRecord = await req.model.delete(username);
   res.status(200).json(deletedRecord);
 }
 

@@ -10,9 +10,9 @@ class DataCollection {
     this.model = model;
   }
 
-  get(_id) {
-    if (_id) {
-      return this.model.findOne({ _id });
+  get(_username) {
+    if (_username) {
+      return this.model.findOne({ 'username': _username });
     }
     else {
       return this.model.find({});
@@ -24,12 +24,12 @@ class DataCollection {
     return newRecord.save();
   }
 
-  update(_id, record) {
-    return this.model.findByIdAndUpdate(_id, record, { new: true });
+  update(_username, record) {
+    return this.model.findByUsernameAndUpdate(_username, record, { new: true });
   }
 
-  delete(_id) {
-    return this.model.findByIdAndDelete(_id);
+  delete(_username) {
+    return this.model.findByUsernameAndDelete(_username);
   }
 
 }
