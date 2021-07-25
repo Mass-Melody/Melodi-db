@@ -9,7 +9,7 @@ const allUsersSchema = mongoose.Schema({
   age: { type: String, default: '' },
   instrument: { type: String, default: '' },
   location: { type: String, default: '' },
-  picture: { String, default: '' },
+  picture: { type: String, default: '' },
   hero: { type: String, default: '' },
   //json string object representing array of friends
   friends: [],

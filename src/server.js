@@ -16,25 +16,31 @@ const v2Routes = require('./routes/v2.js')
 const app = express();
 
 // App Level MW
-app.use(function (req, res, next) {
-  /*var err = new Error('Not Found');
-   err.status = 404;
-   next(err);*/
+app.use(
+cors({
+    origin: '*'
+  })
+);
 
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', '*');
+// app.use(function (req, res, next) {
+//   /*var err = new Error('Not Found');
+//    err.status = 404;
+//    next(err);*/
 
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//   // Website you wish to allow to connect
+//   res.setHeader('Access-Control-Allow-Origin', '*');
 
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization');
+//   // Request methods you wish to allow
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-  //  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   // Request headers you wish to allow
+//   res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization');
 
-  // Pass to next layer of middleware
-  next();
-});
+//   //  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+//   // Pass to next layer of middleware
+//   next();
+// });
 
 app.use(morgan('dev'));
 app.use(express.json());
