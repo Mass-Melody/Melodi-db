@@ -3,22 +3,23 @@
 const mongoose = require('mongoose');
 
 const allUsersSchema = mongoose.Schema({
-  firstName: {type: String, default: ''},
-  lastName: {type: String, default: ''},
-  username: {type: String, default: ''},
-  age: {type: String, default: ''},
-  instrument: {type: String, default: ''},
-  location: {type: String, default: ''},
-  picture: { String, default: ''},
-  hero: {type: String, default: ''},
+  firstName: { type: String, default: '' },
+  lastName: { type: String, default: '' },
+  username: { type: String, default: '' },
+  age: { type: String, default: '' },
+  instrument: { type: String, default: '' },
+  location: { type: String, default: '' },
+  picture: { String, default: '' },
+  hero: { type: String, default: '' },
   //json string object representing array of friends
-  friends: {type: String, default: '[]'},
-  aboutMe: {type: String, default: ''},
-  playlist: {type: String, default: ''},
+  friends: [],
+  aboutMe: { type: String, default: '' },
+  playlist: { type: String, default: '' },
   //json string object representing array of user's posts
-  posts: {type: String, default: '[]'},
+  posts: [],
   //json string object representing array of user's interests
-  interests: {type: String, 
+  interests: {
+    type: String,
     default: `
     [
       {
@@ -44,7 +45,9 @@ const allUsersSchema = mongoose.Schema({
     ]
     `},
   //json string object representing array of user's details?
-  details: {type: String,  default: `
+  details: {
+    type: String,
+    default: `
   [
     {
       id: 1,
