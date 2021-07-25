@@ -16,11 +16,7 @@ const v2Routes = require('./routes/v2.js')
 const app = express();
 
 // App Level MW
-app.use(
-  cors({
-    origin: '*'
-  })
-);
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,6 +27,11 @@ app.use(v1Routes);
 app.use(v2Routes);
 
 // Home Handler
+app.all('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  next()
+});
+
 app.get('/', (req, res) => {
   res.status(200).json('Server is Working!')
 })
