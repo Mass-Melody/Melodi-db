@@ -16,35 +16,35 @@ const v2Routes = require('./routes/v2.js')
 const app = express();
 
 // App Level MW
-app.use(cors());
-app.use(morgan('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(function (req, res, next) {
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
 
-// Routes
-app.use(authRoutes);
-app.use(v1Routes);
-app.use(v2Routes);
+  app.use(morgan('dev'));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
 
-// Home Handler
-app.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next()
-  });
-app.get('/', (req, res) => {
-  res.status(200).json('Server is Working!')
-})
+  // Routes
+  app.use(authRoutes);
+  app.use(v1Routes);
+  app.use(v2Routes);
 
-// Error Handlers
-app.use('*', notFound);
-app.use(errorHandler)
+  // Home Handler
+  app.get('/', (req, res) => {
+    res.status(200).json('Server is Working!')
+  })
+
+  // Error Handlers
+  app.use('*', notFound);
+  app.use(errorHandler)
 
 
-module.exports = {
-  app: app,
-  start: (port) => {
-    if (!port) { throw new Error("Missing Port"); }
-    app.listen(port, () => console.log(`Listening on PORT: ${port}`))
+  module.exports = {
+    app: app,
+    start: (port) => {
+      if (!port) { throw new Error("Missing Port"); }
+      app.listen(port, () => console.log(`Listening on PORT: ${port}`))
+    }
   }
-}
