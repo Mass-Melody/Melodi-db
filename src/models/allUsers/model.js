@@ -15,64 +15,77 @@ const allUsersSchema = mongoose.Schema({
   friends: [],
   aboutMe: { type: String, default: '' },
   playlist: { type: String, default: '' },
-  //json string object representing array of user's posts
-  posts: [],
-  //json string object representing array of user's interests
+  posts: {
+    type: String,
+    default: `
+    [
+      {
+        "id": "1",
+        "title": "Title of Post 1",
+        "content": "Some Content"
+      },
+      {
+        "id": "2",
+        "title": "Title of Post 2",
+        "content": "Some Content"
+      }
+    ]
+    `},
   interests: {
     type: String,
     default: `
     [
       {
-        id: 1,
-        name: 'General',
-        info: '---'
+        "id": "1",
+        "name": "General",
+        "info": "---"
       },
       {
-        id: 2,
-        name: 'Music Genre',
-        info: '---'
+        "id": "2",
+        "name": "Music Genre",
+        "info": "---"
       },
       {
-        id: 3,
-        name: 'Instrument',
-        info: '---'
+        "id": "3",
+        "name": "Instrument",
+        "info": "---"
       },
       {
-        id: 4,
-        name: 'Books',
-        info: '---'
+        "id": "4",
+        "name": "Books",
+        "info": "---"
       }
     ]
     `},
-  //json string object representing array of user's details?
+  //json string object representing array of user"s details?
   details: {
     type: String,
     default: `
   [
     {
-      id: 1,
-      name: 'Gender',
-      info: '---'
+      "id": "1",
+      "name": "Gender",
+      "info": "---"
     },
     {
-      id: 2,
-      name: 'Hometown',
-      info: '---'
+      "id": "2",
+      "name": "Hometown",
+      "info": "---"
     },
     {
-      id: 3,
-      name: 'Food',
-      info: '---'
+      "id": "3",
+      "name": "Food",
+      "info": "---"
     },
     {
-      id: 4,
-      name: 'Bands',
-      info: '---'
+      "id": "4",
+      "name": "Bands",
+      "info": "---"
     },
     {
-      id: 5,
-      name: 'Hobbies',
-      info: '---'
+      "id": "5",
+      "name": "Hobbies",
+      "info": "---"
     }
   ]
   `}
