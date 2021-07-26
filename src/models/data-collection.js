@@ -25,11 +25,11 @@ class DataCollection {
   }
 
   update(_username, record) {
-    return this.model.findByUsernameAndUpdate(_username, record, { new: true });
+    return this.model.findOneAndUpdate({username: _username}, record, { new: true });
   }
 
   delete(_username) {
-    return this.model.findByUsernameAndDelete(_username);
+    return this.model.findByOneAndDelete(_username);
   }
 
 }
