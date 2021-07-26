@@ -18,7 +18,8 @@ const app = express();
 // App Level MW
 app.use(
 cors({
-    origin: '*'
+    origin: '*',
+    methods: 'GET, POST, OPTIONS, PUT, PATCH, DELETE'
   })
 );
 
