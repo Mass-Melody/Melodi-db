@@ -12,7 +12,11 @@ const allUsersSchema = mongoose.Schema({
   picture: { type: String, default: '' },
   hero: { type: String, default: '' },
   //json string object representing array of friends
-  friends: [],
+  friends: {
+    type: String,
+    default: `
+    []
+    `},
   aboutMe: { type: String, default: '' },
   playlist: { type: String, default: '' },
   posts: {
