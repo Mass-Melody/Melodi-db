@@ -9,9 +9,8 @@ const allUsersSchema = mongoose.Schema({
   age: { type: String, default: '' },
   instrument: { type: String, default: '' },
   location: { type: String, default: '' },
-  picture: { type: String, default: '' },
-  hero: { type: String, default: '' },
-  //json string object representing array of friends
+  picture: { type: String, default: 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg' },
+  hero: { type: String, default: 'https://via.placeholder.com/940x500' },
   friends: {
     type: String,
     default: `
@@ -25,13 +24,8 @@ const allUsersSchema = mongoose.Schema({
     [
       {
         "id": "1",
-        "title": "Title of Post 1",
-        "content": "Some Content"
-      },
-      {
-        "id": "2",
-        "title": "Title of Post 2",
-        "content": "Some Content"
+        "title": "Welcome to Melodi!",
+        "content": "Discover, Connect, Jam Out!"
       }
     ]
     `},
